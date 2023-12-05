@@ -1,0 +1,5 @@
+src: "C:/Users/User/OneDrive/Desktop/UROPS/test" #C:/Users/User/OneDrive/Desktop/UROPS/hellingertest /home/stumerv/test
+distancemeasure: "Tamura" # ["Leven", "Raw", "JC", "K2P", "Tamura", "Phylo"]
+MDS: "noMDS" # ["MDS", "noMDS"]
+clustering: "agglo" #["OPTICS", "Kmeans", "agglo"]
+numclusters: 4
