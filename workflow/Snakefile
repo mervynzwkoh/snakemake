@@ -7,31 +7,31 @@ clustering = config["clustering"]
 
 # Takes in fasta.msa file and forms distance array based on chosen distance matrix
 rule distanceMatrixFormation:
-  output: "res/1distanceMatrixFormation.done"
+  output: touch("res/1distanceMatrixFormation.done")
   shell: "python scripts/1distanceMatrixFormation.py {src}/msa.fasta"
 
 # Calculates silhouette score for chosen clustering algorithm, generates partitions in csv file
 rule MDScluster:
   input: "res/1distanceMatrixFormation.done"
-  output: "res/2MDS+cluster.done"
+  output: touch("res/2MDS+cluster.done")
   conda: "envs/2MDScluster.yaml"
   shell: "python scripts/2MDS+cluster.py {src}/distancearrays"
 
 # Separates fasta and vcf files based on partitions from previous rule
 rule filepartition:
   input: "res/2MDS+cluster.done"
-  output: "res/5filepartition.done"
+  output: touch("res/5filepartition.done")
   conda: "envs/5filepartition.yaml"
   shell: "python scripts/5filepartition.py {src}"
 
 # Generates indivdual csv files for each sample and HellingerMatrix.Rda for each partition
 rule faster:
   input: "res/5filepartition.done"
-  output: "res/6faster.done"
+  output: touch("res/6faster.done")
   shell: "Rscript scripts/6faster.R {src} --num_clusters 4"
 
 # Outputs visNetwork transmission network in html format
 rule seqTrack:
-  input: "res/6faster.done"
-  output: "res/7seqTrack.done"
+  #input: "res/6faster.done"
+  output: touch("res/7seqTrack.done")
   shell: "Rscript scripts/7seqTrack.R {src}"

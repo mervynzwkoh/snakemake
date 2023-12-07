@@ -294,4 +294,4 @@ for (x in 0:(num_partitions - 1)) {
 }
 
 # generate output file for smk
-file.create("../res/7seqTrack.done")
+# file.create(paste0(getwd(), "workflow/res/7seqTrack.done"))
