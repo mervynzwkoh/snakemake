@@ -270,7 +270,7 @@ for k in fns:
         distancearray(dictSamples, k)
         
 # generate output file for smk
-open("res/1distanceMatrixFormation.done", "x")
+# open("res/1distanceMatrixFormation.done", "x")
 
 
 #################################

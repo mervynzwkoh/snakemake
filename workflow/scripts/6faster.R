@@ -677,7 +677,7 @@ for (i in c(0:(num_partitions - 1))) {
 }
 
 # generate output file for smk
-file.create("workflow/res/6faster.done")
+# file.create("workflow/res/6faster.done")
 
 # comparing processing times
 # times <- bench::mark(

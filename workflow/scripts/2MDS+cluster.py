@@ -503,6 +503,6 @@ for jj in range(4, 5):  # modify numbers according to which distances you want
             aggloCluster(bestdist, useMDS=False)
 
     # generate output file for smk
-    open("res/2MDS+cluster.done", "x")
+    # open("res/2MDS+cluster.done", "x")
 
     # Generating cluster based on best dstance from silhouette score

@@ -207,4 +207,4 @@ copyFiles()
 renameFiles()
 
 # generate output file for smk
-open("res/5filepartition.done", "x")
+# open("res/5filepartition.done", "x")
