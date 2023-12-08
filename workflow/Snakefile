@@ -32,6 +32,6 @@ rule faster:
 
 # Outputs visNetwork transmission network in html format
 rule seqTrack:
-  #input: "res/6faster.done"
+  input: "res/6faster.done"
   output: touch("res/7seqTrack.done")
   shell: "Rscript scripts/7seqTrack.R {src}"
