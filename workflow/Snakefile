@@ -1,5 +1,5 @@
 # src directory must have 1. msa.fasta 2. MasterList.csv 3. fastavcfloc directory
-configfile: "../config/config.yaml"
+configfile: "config/config.yaml"
 src = config["src"]
 distancemeasure = config["distancemeasure"]
 MDS = config["MDS"]
