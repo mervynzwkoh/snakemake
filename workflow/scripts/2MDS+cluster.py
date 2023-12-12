@@ -11,6 +11,7 @@ from scipy.cluster.hierarchy import fcluster, linkage
 
 parser = argparse.ArgumentParser()
 parser.add_argument("source", help="The path of the directory with the distance array")
+parser.add_argument("--useMDS", help="Whether or not to use multi-dimentional scaling", default= "noMDS")
 args = parser.parse_args()
 
 os.makedirs(args.source + "/clusterlabels", exist_ok=True)
@@ -23,6 +24,7 @@ os.makedirs(args.source + "/silhouette", exist_ok=True)
 for jj in range(4, 5):  # modify numbers according to which distances you want
     # eg. if you only want K2P, then put range(3,4)
     src = args.source
+    mds = (args.useMDS == "MDS")
     arraypath = ["Leven", "Raw", "JC", "K2P", "Tamura", "Phylo"][jj]
     distanceMeasure = ["Leven", "Raw", "JC", "K2P", "Tamura", "Phylo"][jj]
     os.makedirs(src + "/clusterlabels/" + distanceMeasure, exist_ok=True)
@@ -499,8 +501,8 @@ for jj in range(4, 5):  # modify numbers according to which distances you want
     # Calling of silhouette analysis
     for i in ["Kmeans", "OPTICS", "Agglomerative"]:
         if i == "Agglomerative":
-            bestdist = silhouette(i, useMDS=False)
-            aggloCluster(bestdist, useMDS=False)
+            bestdist = silhouette(i, useMDS=mds)
+            aggloCluster(bestdist, useMDS=mds)
 
     # generate output file for smk
     # open("res/2MDS+cluster.done", "x")

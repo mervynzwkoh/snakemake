@@ -14,9 +14,9 @@ rule distanceMatrixFormation:
 # Calculates silhouette score for chosen clustering algorithm, generates partitions in csv file
 rule MDScluster:
   #input: "res/1distanceMatrixFormation.done"
-  output: touch("res/2MDS+cluster.done")
+  output: temp(touch("res/2MDS+cluster.done"))
   conda: "envs/2MDScluster.yaml"
-  shell: "python scripts/2MDS+cluster.py {src}/distancearrays"
+  shell: "python scripts/2MDS+cluster.py {src}/distancearrays --useMDS {MDS}"
 
 # Separates fasta and vcf files based on partitions from previous rule
 rule filepartition:
