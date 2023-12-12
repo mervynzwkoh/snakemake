@@ -1,0 +1,11 @@
+Config file ../snakemake/config/config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+candidate job distanceMatrixFormation
+    wildcards: 
+selected job distanceMatrixFormation
+    wildcards: 
+file None:
+    Producer found, hence exceptions are ignored.
+
+Nothing to be done (all requested files are present and up to date).
+Complete log: .snakemake/log/2023-12-07T161005.575578.snakemake.log

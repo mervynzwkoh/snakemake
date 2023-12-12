@@ -1,0 +1,62 @@
+Config file ../snakemake/config/config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                        count
+-----------------------  -------
+MDScluster                     1
+distanceMatrixFormation        1
+filepartition                  1
+total                          3
+
+Select jobs to execute...
+
+[Tue Dec 12 17:19:24 2023]
+rule distanceMatrixFormation:
+    output: res/1distanceMatrixFormation.done
+    jobid: 2
+    reason: Code has changed since last execution
+    resources: tmpdir=/var/folders/qx/45c8cdmd6rx_np70td6hmvhr0000gn/T
+
+[Tue Dec 12 17:19:50 2023]
+Finished job 2.
+1 of 3 steps (33%) done
+Select jobs to execute...
+
+[Tue Dec 12 17:19:50 2023]
+rule MDScluster:
+    input: res/1distanceMatrixFormation.done
+    output: res/2MDS+cluster.done
+    jobid: 1
+    reason: Input files updated by another job: res/1distanceMatrixFormation.done
+    resources: tmpdir=/var/folders/qx/45c8cdmd6rx_np70td6hmvhr0000gn/T
+
+[Tue Dec 12 17:20:53 2023]
+Finished job 1.
+2 of 3 steps (67%) done
+Select jobs to execute...
+
+[Tue Dec 12 17:20:53 2023]
+rule filepartition:
+    input: res/2MDS+cluster.done
+    output: res/5filepartition.done
+    jobid: 0
+    reason: Input files updated by another job: res/2MDS+cluster.done
+    resources: tmpdir=/var/folders/qx/45c8cdmd6rx_np70td6hmvhr0000gn/T
+
+[Tue Dec 12 17:21:10 2023]
+Error in rule filepartition:
+    jobid: 0
+    input: res/2MDS+cluster.done
+    output: res/5filepartition.done
+    conda-env: /Users/windsorkoh/Desktop/git/snakemake/.snakemake/conda/0d3e2eb07ebe4f43843a428986ecb691_
+    shell:
+        python workflow/scripts/5filepartition.py /Users/windsorkoh/Desktop/git/snakemake/data/CLUSTER0
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-12-12T171856.473546.snakemake.log

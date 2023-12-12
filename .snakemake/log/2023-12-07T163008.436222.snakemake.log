@@ -1,0 +1,17 @@
+Config file ../snakemake/config/config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Full Traceback (most recent call last):
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/__init__.py", line 792, in snakemake
+    success = workflow.execute(
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/workflow.py", line 895, in execute
+    dag.init()
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/dag.py", line 219, in init
+    self.file2jobs(file),
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/dag.py", line 1994, in file2jobs
+    raise MissingRuleException(targetfile)
+snakemake.exceptions.MissingRuleException: No rule to produce {src}/5filepartition.done (if you use input functions make sure that they don't raise unexpected exceptions).
+
+MissingRuleException:
+No rule to produce {src}/5filepartition.done (if you use input functions make sure that they don't raise unexpected exceptions).
+unlocking
+removed all locks

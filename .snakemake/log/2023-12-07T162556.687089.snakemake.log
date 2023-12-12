@@ -1,0 +1,81 @@
+Config file ../snakemake/config/config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                        count
+-----------------------  -------
+MDScluster                     1
+distanceMatrixFormation        1
+filepartition                  1
+total                          3
+
+Resources before job selection: {'_cores': 2, '_nodes': 9223372036854775807}
+Ready jobs (1)
+Select jobs to execute...
+Selected jobs (1)
+Resources after job selection: {'_cores': 1, '_nodes': 9223372036854775806}
+
+[Thu Dec  7 16:25:56 2023]
+rule distanceMatrixFormation:
+    output: {src}/1distanceMatrixFormation.done
+    jobid: 2
+    reason: Missing output files: {src}/1distanceMatrixFormation.done
+    wildcards: src={src}
+    resources: tmpdir=/var/folders/qx/45c8cdmd6rx_np70td6hmvhr0000gn/T
+
+Full Traceback (most recent call last):
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/executors/__init__.py", line 2656, in run_wrapper
+    run(
+  File "/Users/windsorkoh/Desktop/git/snakemake/workflow/Snakefile", line 21, in __rule_distanceMatrixFormation
+    rule filepartition:
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/shell.py", line 294, in __new__
+    raise sp.CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command 'set -euo pipefail;  python workflow/scripts/1distanceMatrixFormation.py /Users/windsorkoh/Desktop/git/snakemake/data/CLUSTER0/msa.fasta' returned non-zero exit status 1.
+
+[Thu Dec  7 16:26:24 2023]
+Error in rule distanceMatrixFormation:
+    jobid: 2
+    output: {src}/1distanceMatrixFormation.done
+    shell:
+        python workflow/scripts/1distanceMatrixFormation.py /Users/windsorkoh/Desktop/git/snakemake/data/CLUSTER0/msa.fasta
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Full Traceback (most recent call last):
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/executors/__init__.py", line 2656, in run_wrapper
+    run(
+  File "/Users/windsorkoh/Desktop/git/snakemake/workflow/Snakefile", line 21, in __rule_distanceMatrixFormation
+    rule filepartition:
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/shell.py", line 294, in __new__
+    raise sp.CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command 'set -euo pipefail;  python workflow/scripts/1distanceMatrixFormation.py /Users/windsorkoh/Desktop/git/snakemake/data/CLUSTER0/msa.fasta' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/executors/__init__.py", line 715, in _callback
+    raise ex
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/executors/__init__.py", line 699, in cached_or_run
+    run_func(*args)
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/site-packages/snakemake/executors/__init__.py", line 2692, in run_wrapper
+    raise RuleException(
+snakemake.exceptions.RuleException: CalledProcessError in file /Users/windsorkoh/Desktop/git/snakemake/workflow/Snakefile, line 11:
+Command 'set -euo pipefail;  python workflow/scripts/1distanceMatrixFormation.py /Users/windsorkoh/Desktop/git/snakemake/data/CLUSTER0/msa.fasta' returned non-zero exit status 1.
+  File "/Users/windsorkoh/Desktop/git/snakemake/workflow/Snakefile", line 11, in __rule_distanceMatrixFormation
+
+RuleException:
+CalledProcessError in file /Users/windsorkoh/Desktop/git/snakemake/workflow/Snakefile, line 11:
+Command 'set -euo pipefail;  python workflow/scripts/1distanceMatrixFormation.py /Users/windsorkoh/Desktop/git/snakemake/data/CLUSTER0/msa.fasta' returned non-zero exit status 1.
+  File "/Users/windsorkoh/Desktop/git/snakemake/workflow/Snakefile", line 11, in __rule_distanceMatrixFormation
+  File "/Users/windsorkoh/mambaforge/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-12-07T162556.687089.snakemake.log
+unlocking
+removing lock
+removing lock
+removed all locks

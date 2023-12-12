@@ -1,0 +1,8 @@
+Config file ../snakemake/config/config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Nothing to be done (all requested files are present and up to date).
+Complete log: .snakemake/log/2023-12-07T161527.194558.snakemake.log
+unlocking
+removing lock
+removing lock
+removed all locks

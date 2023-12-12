@@ -1,0 +1,26 @@
+Config file ../snakemake/config/config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job              count
+-------------  -------
+filepartition        1
+total                1
+
+Select jobs to execute...
+
+[Tue Dec 12 17:56:05 2023]
+rule filepartition:
+    input: res/2MDS+cluster.done
+    output: res/5filepartition.done
+    jobid: 0
+    reason: Missing output files: res/5filepartition.done
+    resources: tmpdir=/var/folders/qx/45c8cdmd6rx_np70td6hmvhr0000gn/T
+
+[Tue Dec 12 17:56:06 2023]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2023-12-12T175604.962690.snakemake.log
