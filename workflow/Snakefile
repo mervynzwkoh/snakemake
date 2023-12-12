@@ -1,9 +1,10 @@
 # src directory must have 1. msa.fasta 2. MasterList.csv 3. fastavcfloc directory
-configfile: "config/config.yaml"
+configfile: "../config/config.yaml"
 src = config["src"]
 distancemeasure = config["distancemeasure"]
 MDS = config["MDS"]
 clustering = config["clustering"]
+numclusters = config["numclusters"]
 
 # Takes in fasta.msa file and forms distance array based on chosen distance matrix
 rule distanceMatrixFormation:
@@ -12,7 +13,7 @@ rule distanceMatrixFormation:
 
 # Calculates silhouette score for chosen clustering algorithm, generates partitions in csv file
 rule MDScluster:
-  input: "res/1distanceMatrixFormation.done"
+  #input: "res/1distanceMatrixFormation.done"
   output: touch("res/2MDS+cluster.done")
   conda: "envs/2MDScluster.yaml"
   shell: "python scripts/2MDS+cluster.py {src}/distancearrays"
@@ -28,7 +29,7 @@ rule filepartition:
 rule faster:
   input: "res/5filepartition.done"
   output: touch("res/6faster.done")
-  shell: "Rscript scripts/6faster.R {src} --num_clusters 4"
+  shell: "Rscript scripts/6faster.R {src} --num_clusters {numclusters}"
 
 # Outputs visNetwork transmission network in html format
 rule seqTrack:
