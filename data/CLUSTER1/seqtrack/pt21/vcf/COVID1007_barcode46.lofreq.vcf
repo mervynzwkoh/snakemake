@@ -1,0 +1,26 @@
+##fileformat=VCFv4.0
+##fileDate=20230526
+##source=lofreq call -B -f ../ref.fasta --no-default-filter -r MN908947.3:1-233 -o /tmp/lofreq2_call_paralleln54qykm2/0.vcf.gz q-1_COVID1007_barcode46.primertrimmed.rg.sorted.bam 
+##reference=../ref.fasta
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Raw Depth">
+##INFO=<ID=AF,Number=1,Type=Float,Description="Allele Frequency">
+##INFO=<ID=SB,Number=1,Type=Integer,Description="Phred-scaled strand bias at this position">
+##INFO=<ID=DP4,Number=4,Type=Integer,Description="Counts for ref-forward bases, ref-reverse, alt-forward and alt-reverse bases">
+##INFO=<ID=INDEL,Number=0,Type=Flag,Description="Indicates that the variant is an INDEL.">
+##INFO=<ID=CONSVAR,Number=0,Type=Flag,Description="Indicates that the variant is a consensus variant (as opposed to a low frequency variant).">
+##INFO=<ID=HRUN,Number=1,Type=Integer,Description="Homopolymer length to the right of report indel position">
+##FILTER=<ID=min_snvqual_47,Description="Minimum SNV Quality (Phred) 47">
+##FILTER=<ID=min_indelqual_20,Description="Minimum Indel Quality (Phred) 20">
+##FILTER=<ID=min_dp_10,Description="Minimum Coverage 10">
+##FILTER=<ID=sb_fdr,Description="Strand-Bias Multiple Testing Correction: fdr corr. pvalue > 0.001000">
+##FILTER=<ID=min_snvqual_69,Description="Minimum SNV Quality (Phred) 69">
+##FILTER=<ID=min_indelqual_20,Description="Minimum Indel Quality (Phred) 20">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+MN908947.3	6312	.	C	A	24683	PASS	DP=1998;AF=0.641141;SB=13;DP4=1,4,886,420
+MN908947.3	6539	.	C	T	84	PASS	DP=1995;AF=0.061153;SB=21;DP4=836,833,67,104
+MN908947.3	13730	.	C	T	25787	PASS	DP=1000;AF=0.943000;SB=2;DP4=3,1,487,485
+MN908947.3	19524	.	C	T	20865	PASS	DP=1000;AF=0.909000;SB=3;DP4=3,5,481,438
+MN908947.3	21781	.	C	T	135	PASS	DP=992;AF=0.081653;SB=69;DP4=459,419,24,75
+MN908947.3	23185	.	C	T	37577	PASS	DP=1993;AF=0.864526;SB=8;DP4=23,15,852,922
+MN908947.3	23929	.	C	T	21297	PASS	DP=1000;AF=0.871000;SB=1;DP4=12,9,443,442
+MN908947.3	28311	.	C	T	14958	PASS	DP=1000;AF=0.824000;SB=8;DP4=36,48,454,421

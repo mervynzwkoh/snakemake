@@ -1,0 +1,25 @@
+##fileformat=VCFv4.0
+##fileDate=20230526
+##source=lofreq call -B -f ../ref.fasta --no-default-filter -r MN908947.3:1-233 -o /tmp/lofreq2_call_parallelqvxxn91r/0.vcf.gz q-1_COVID1007_barcode48.primertrimmed.rg.sorted.bam 
+##reference=../ref.fasta
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Raw Depth">
+##INFO=<ID=AF,Number=1,Type=Float,Description="Allele Frequency">
+##INFO=<ID=SB,Number=1,Type=Integer,Description="Phred-scaled strand bias at this position">
+##INFO=<ID=DP4,Number=4,Type=Integer,Description="Counts for ref-forward bases, ref-reverse, alt-forward and alt-reverse bases">
+##INFO=<ID=INDEL,Number=0,Type=Flag,Description="Indicates that the variant is an INDEL.">
+##INFO=<ID=CONSVAR,Number=0,Type=Flag,Description="Indicates that the variant is a consensus variant (as opposed to a low frequency variant).">
+##INFO=<ID=HRUN,Number=1,Type=Integer,Description="Homopolymer length to the right of report indel position">
+##FILTER=<ID=min_snvqual_47,Description="Minimum SNV Quality (Phred) 47">
+##FILTER=<ID=min_indelqual_20,Description="Minimum Indel Quality (Phred) 20">
+##FILTER=<ID=min_dp_10,Description="Minimum Coverage 10">
+##FILTER=<ID=sb_fdr,Description="Strand-Bias Multiple Testing Correction: fdr corr. pvalue > 0.001000">
+##FILTER=<ID=min_snvqual_69,Description="Minimum SNV Quality (Phred) 69">
+##FILTER=<ID=min_indelqual_20,Description="Minimum Indel Quality (Phred) 20">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+MN908947.3	6312	.	C	A	25256	PASS	DP=2000;AF=0.639500;SB=9;DP4=1,3,861,446
+MN908947.3	7392	.	C	T	527	PASS	DP=1000;AF=0.207000;SB=309;DP4=443,300,38,191
+MN908947.3	13730	.	C	T	26306	PASS	DP=1000;AF=0.958000;SB=5;DP4=2,6,481,486
+MN908947.3	19524	.	C	T	21405	PASS	DP=1000;AF=0.919000;SB=1;DP4=5,6,484,448
+MN908947.3	23185	.	C	T	39357	PASS	DP=2000;AF=0.875000;SB=2;DP4=24,20,881,914
+MN908947.3	23929	.	C	T	22165	PASS	DP=1000;AF=0.873000;SB=2;DP4=12,9,439,451
+MN908947.3	28311	.	C	T	14142	PASS	DP=1000;AF=0.802000;SB=1;DP4=50,44,433,426

@@ -1,0 +1,28 @@
+##fileformat=VCFv4.0
+##fileDate=20230526
+##source=lofreq call -B -f ../ref.fasta --no-default-filter -r MN908947.3:1-233 -o /tmp/lofreq2_call_parallel1dc8urnz/0.vcf.gz q-1_COVID1009_barcode18.primertrimmed.rg.sorted.bam 
+##reference=../ref.fasta
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Raw Depth">
+##INFO=<ID=AF,Number=1,Type=Float,Description="Allele Frequency">
+##INFO=<ID=SB,Number=1,Type=Integer,Description="Phred-scaled strand bias at this position">
+##INFO=<ID=DP4,Number=4,Type=Integer,Description="Counts for ref-forward bases, ref-reverse, alt-forward and alt-reverse bases">
+##INFO=<ID=INDEL,Number=0,Type=Flag,Description="Indicates that the variant is an INDEL.">
+##INFO=<ID=CONSVAR,Number=0,Type=Flag,Description="Indicates that the variant is a consensus variant (as opposed to a low frequency variant).">
+##INFO=<ID=HRUN,Number=1,Type=Integer,Description="Homopolymer length to the right of report indel position">
+##FILTER=<ID=min_snvqual_47,Description="Minimum SNV Quality (Phred) 47">
+##FILTER=<ID=min_indelqual_20,Description="Minimum Indel Quality (Phred) 20">
+##FILTER=<ID=min_dp_10,Description="Minimum Coverage 10">
+##FILTER=<ID=sb_fdr,Description="Strand-Bias Multiple Testing Correction: fdr corr. pvalue > 0.001000">
+##FILTER=<ID=min_snvqual_69,Description="Minimum SNV Quality (Phred) 69">
+##FILTER=<ID=min_indelqual_20,Description="Minimum Indel Quality (Phred) 20">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+MN908947.3	3873	.	T	C	1778	PASS	DP=1000;AF=0.263000;SB=15;DP4=352,314,127,156
+MN908947.3	5884	.	C	T	119	PASS	DP=1000;AF=0.054000;SB=3;DP4=446,452,26,32
+MN908947.3	6312	.	C	A	17619	PASS	DP=1520;AF=0.606579;SB=6;DP4=1,2,660,283
+MN908947.3	7392	.	C	T	327	PASS	DP=538;AF=0.204461;SB=116;DP4=231,164,30,99
+MN908947.3	13730	.	C	T	26425	PASS	DP=1000;AF=0.944000;SB=7;DP4=2,6,481,474
+MN908947.3	19524	.	C	T	21295	PASS	DP=1000;AF=0.910000;SB=23;DP4=1,10,482,446
+MN908947.3	23185	.	C	T	39180	PASS	DP=2000;AF=0.860500;SB=2;DP4=19,16,865,907
+MN908947.3	23929	.	C	T	21680	PASS	DP=1000;AF=0.876000;SB=28;DP4=20,4,435,451
+MN908947.3	24063	.	T	C	15749	PASS	DP=1000;AF=0.840000;SB=8;DP4=21,35,436,456
+MN908947.3	28311	.	C	T	14598	PASS	DP=1000;AF=0.813000;SB=19;DP4=36,58,449,412
