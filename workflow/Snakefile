@@ -16,7 +16,7 @@ rule MDScluster:
   #input: "res/1distanceMatrixFormation.done"
   output: temp(touch("res/2MDS+cluster.done"))
   conda: "envs/2MDScluster.yaml"
-  shell: "python scripts/2MDS+cluster.py {src}/distancearrays --useMDS {MDS}"
+  shell: "python scripts/2MDS+cluster.py {src}/distancearrays --useMDS {MDS} --clustering {clustering}"
 
 # Separates fasta and vcf files based on partitions from previous rule
 rule filepartition:
