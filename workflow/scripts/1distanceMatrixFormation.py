@@ -3,10 +3,12 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument("source", help="The source location of the MSA file")
+parser.add_argument("--distmeasure", help="Which distance measure to use")
 args = parser.parse_args()
 
 # src is the ABSOLUTE path to MSA file (eg. /Users/xyz/covid/dataset.msa)
 src = args.source
+distmeasure = args.distmeasure + "distance"
 PATH = os.path.dirname(src)
 
 
@@ -68,7 +70,7 @@ def estimate_nucleotide_frequencies(seq):
     return [x / length for x in [A, C, G, T]]
 
 
-def pdistance(seq1, seq2):
+def Phylodistance(seq1, seq2):
     p = 0
     pairs = []
     for x in zip(seq1, seq2):
@@ -82,7 +84,7 @@ def pdistance(seq1, seq2):
     return float(p) / length
 
 
-def levendistance(seq1, seq2):
+def Levendistance(seq1, seq2):
     import Levenshtein as lv
 
     # seq1 = seq1.replace('-','').upper()
@@ -251,8 +253,8 @@ def distancearray(dictG, fn):
     print("dones")
     fnnames = {
         "Tamuradistance": "TamuraArray",
-        "levendistance": "LevenArray",
-        "pdistance": "RawArray",
+        "Levendistance": "LevenArray",
+        "Phylodistance": "RawArray",
         "JCdistance": "JCArray",
         "K2Pdistance": "K2PArray",
     }
@@ -263,10 +265,12 @@ def distancearray(dictG, fn):
     return out
 
 
-fns = [Tamuradistance, levendistance, pdistance, JCdistance, K2Pdistance]
+fns = [Tamuradistance, Levendistance, Phylodistance, JCdistance, K2Pdistance]
+strfns = ["Tamuradistance", "Levendistance", "Phylodistance", "JCdistance", "K2Pdistance"]
+idx = strfns.index(distmeasure)
 for k in fns:
     # if you only want tamura distance
-    if k == Tamuradistance:
+    if k == fns[idx]:
         distancearray(dictSamples, k)
         
 # generate output file for smk

@@ -1,7 +1,7 @@
 # src directory must have 1. msa.fasta 2. MasterList.csv 3. fastavcfloc directory
 configfile: "../config/config.yaml"
 src = config["src"]
-distancemeasure = config["distancemeasure"]
+distmeasure = config["distmeasure"]
 MDS = config["MDS"]
 clustering = config["clustering"]
 numclusters = config["numclusters"]
@@ -9,14 +9,14 @@ numclusters = config["numclusters"]
 # Takes in fasta.msa file and forms distance array based on chosen distance matrix
 rule distanceMatrixFormation:
   output: touch("res/1distanceMatrixFormation.done")
-  shell: "python scripts/1distanceMatrixFormation.py {src}/msa.fasta"
+  shell: "python scripts/1distanceMatrixFormation.py {src}/msa.fasta --distmeasure {distmeasure}"
 
 # Calculates silhouette score for chosen clustering algorithm, generates partitions in csv file
 rule MDScluster:
-  #input: "res/1distanceMatrixFormation.done"
-  output: temp(touch("res/2MDS+cluster.done"))
+  input: "res/1distanceMatrixFormation.done"
+  output: touch("res/2MDS+cluster.done")
   conda: "envs/2MDScluster.yaml"
-  shell: "python scripts/2MDS+cluster.py {src}/distancearrays --useMDS {MDS} --clustering {clustering}"
+  shell: "python scripts/2MDS+cluster.py {src}/distancearrays --useMDS {MDS} --clustering {clustering} --distmeasure {distmeasure}"
 
 # Separates fasta and vcf files based on partitions from previous rule
 rule filepartition:
