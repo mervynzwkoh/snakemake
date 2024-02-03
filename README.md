@@ -20,4 +20,4 @@ Executing the workflow
      - fastavcfloc: directory that contains two more directories, "fasta" and "vcf", within those directories are the fasta and vcf files
 6. Toggle to the snakemake directory in miniforge interface
 7. Enter the following command to run the pipeline
-   - "snakemake res/7seqtrack.done --cores 4 --sdm conda"
+   - "snakemake res/7seqTrack.done --cores 4 --sdm conda"
