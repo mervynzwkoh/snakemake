@@ -21,7 +21,7 @@ def generateDict(src):
     for i in range(0, len(lines)):
         line = lines[i].strip()
         if line and line[0] == ">":
-            key = line[1:20]  # 9 for OU/OV, 11 for ERR
+            key = line[1:11]  # 9 for OU/OV, 11 for ERR
             # print(key)
             if i < len(lines):
                 i += 1

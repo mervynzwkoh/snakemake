@@ -18,6 +18,7 @@ Executing the workflow
      - msa.fasta
      - MasterList: csv with accession numbers and release dates
      - fastavcfloc: directory that contains two more directories, "fasta" and "vcf", within those directories are the fasta and vcf files
+       - the names of the fasta and vcf files should just be the accession number ie. "accessionnum.fasta" or "accessionnum.vcf"
 6. Toggle to the snakemake directory in miniforge interface
 7. Enter the following command to run the pipeline
    - "snakemake res/7seqTrack.done --cores 4 --sdm conda"

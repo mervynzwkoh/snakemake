@@ -55,8 +55,8 @@ with open(partitions_csv, "r") as csv_file:
         except IndexError:
             continue
 
-    if max_integer is None or integer_value > max_integer:
-        max_integer = integer_value
+        if max_integer is None or integer_value > max_integer:
+            max_integer = integer_value
 
     num_partitions = max_integer + 1
 
