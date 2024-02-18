@@ -1,4 +1,4 @@
-src: "C:/Users/User/OneDrive/Desktop/UROPS/tests/ebolatest" # path of directory that contains all the fasta/vcf/msa file
+src: "" # path of directory that contains all the fasta/vcf/msa file
 distmeasure: "Tamura" # ["Leven", "Raw", "JC", "K2P", "Tamura", "Phylo"]
 MDS: "noMDS" # ["MDS", "noMDS"]
 clustering: "Agglomerative" #["OPTICS", "Kmeans", "Agglomerative"]

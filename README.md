@@ -12,13 +12,11 @@ Setting up environment to run snakemake (https://snakemake.readthedocs.io/en/sta
 
 Executing the workflow
 
-5. Edit the config file in the workflow
-   - enter path of directory that contains all the fasta/vcf/msa file
+5. Toggle to the snakemake directory in miniforge interface
+6. Enter the following command to run the pipeline
+   - "snakemake res/7seqTrack.done --cores 4 --sdm conda --configfile config/config.yaml --config src={path of directory containing all fasta/vcf/msa files}"
    - the directory should include (ensure files and directories are renamed accordingly):
      - msa.fasta
      - MasterList: csv with accession numbers and release dates
      - fastavcfloc: directory that contains two more directories, "fasta" and "vcf", within those directories are the fasta and vcf files
        - the names of the fasta and vcf files should just be the accession number ie. "accessionnum.fasta" or "accessionnum.vcf"
-6. Toggle to the snakemake directory in miniforge interface
-7. Enter the following command to run the pipeline
-   - "snakemake res/7seqTrack.done --cores 4 --sdm conda"
