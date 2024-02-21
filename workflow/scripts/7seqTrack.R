@@ -25,7 +25,15 @@ build_tree <- function(masterlist, csvfromvcfdir, samplenumber, outputloc) {
   return(NULL)
 }
 
-build_network <- function(masterlist, csvfromvcfdir, samplenumber, outputloc, x) {
+build_network <- function(masterlist, csvfromvcfdir, outputloc, x) {
+  print("hi")
+  library(readxl)
+
+  data <- readxl::read_excel(masterlist)
+  if (nrow(data) == 1) {
+    return()
+  }
+
   library(adegenet)
   library(ape)
   library(data.table)
@@ -33,7 +41,6 @@ build_network <- function(masterlist, csvfromvcfdir, samplenumber, outputloc, x)
   library(stringr)
   library(webshot)
   library(tidyverse)
-  library(readxl)
   library(hash)
   library(igraph) # current library for graphing
 
@@ -275,7 +282,7 @@ mysqtk[[1]][, robust := sapply(i1i2, function(x) nrow(mysqtkdt[i1i2 == x])/101)]
 
 finalfn <- function(inputfiledir, vcfinputfilename, fastainputfilename, outputfiledir, x) {
   masterexcelfile <- paste0(inputfiledir, list.files(inputfiledir, ".xlsx"))
-  build_network(masterexcelfile, outputfiledir, samplenumber, outputfiledir, x)
+  build_network(masterexcelfile, outputfiledir, outputfiledir, x)
 }
 
 # 32 samples: 1hr 21 min
@@ -292,6 +299,3 @@ for (x in 0:(num_partitions - 1)) {
   dr <- paste0(src, "/seqtrack/pt", x, "/")
   finalfn(dr, "vcf", "fasta", dr, x)
 }
-
-# generate output file for smk
-# file.create(paste0(getwd(), "workflow/res/7seqTrack.done"))
