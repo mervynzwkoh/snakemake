@@ -351,6 +351,7 @@ finalfn <- function(inputfiledir, vcfinputfilename, fastainputfilename, outputfi
       csv_datatable <- function(accessionno, fastadirpath, vcfdirpath, destdirpath, suffix) {
         library(seqinr)
         library(stringr)
+        library(vcfR)
 
         seq_list <- list() # to store fasta sequence
 
@@ -611,26 +612,39 @@ finalfn <- function(inputfiledir, vcfinputfilename, fastainputfilename, outputfi
         }
         library(dplyr)
         vcf_path <- paste0(vcfdirpath, accessionno, ".lofreq.vcf") # path to vcf file
-        DF_ref <- extract_from_vcf(vcf_path)
         DF_source <- df # data frame from the fasta file
-        colnames(DF_source) <- c("accession", "POSSN", "nucleotide", "AF", "ref") # change names of columns
-        DF_ref$POSSN <- as.double(DF_ref$POSSN) # convert the position values to type double
-        DF_source$AF <- as.double(DF_source$AF) # convert the AF values to type double
-        temp <- left_join(DF_source, DF_ref, by = c("POSSN", "nucleotide"))
-        # join DF_source and DF_ref and keep all the rows in DF_source
+        # define function to check if vcf is valid
+        # if not valid: temp = DF_source
+        # else: run the DF_ref code
+        vcf_read <- read.vcfR(vcf_path)
+        if (length(vcf_read@fix) == 0) {
+          colnames(DF_source) <- c("accession", "POSSN", "nucleotide", "AF", "ref") # change names of columns
+          DF_source$AF <- as.double(DF_source$AF) # convert the AF values to type double
+          temp <- DF_source
+          final <- data.frame(temp$accession, temp$POSSN, temp$nucleotide, temp$AF, temp$ref)
+          final <- plyr::rename(final, replace = c("temp.AF" = "AF"))
+        } else {
+          DF_ref <- extract_from_vcf(vcf_path)
+          colnames(DF_source) <- c("accession", "POSSN", "nucleotide", "AF", "ref") # change names of columns
+          DF_ref$POSSN <- as.double(DF_ref$POSSN) # convert the position values to type double
+          DF_source$AF <- as.double(DF_source$AF) # convert the AF values to type double
+          temp <- left_join(DF_source, DF_ref, by = c("POSSN", "nucleotide"))
+          # join DF_source and DF_ref and keep all the rows in DF_source
 
-        variantpositions <- unique(DF_ref$POSSN) # identify positions of the variants
-        for (k in variantpositions) {
-          # replace the allele frequencies from the fasta files with the
-          # allele frequencies from the vcf file at variant positions
-          temp[which(temp$POSSN == k), "AF.x"] <- DF_ref[which(DF_ref$POSSN == k), "AF"]
+          variantpositions <- unique(DF_ref$POSSN) # identify positions of the variants
+          for (k in variantpositions) {
+            # replace the allele frequencies from the fasta files with the
+            # allele frequencies from the vcf file at variant positions
+            temp[which(temp$POSSN == k), "AF.x"] <- DF_ref[which(DF_ref$POSSN == k), "AF"]
+            final <- data.frame(temp$accession, temp$POSSN, temp$nucleotide, temp$AF.x, temp$ref)
+            final <- plyr::rename(final, replace = c("temp.AF.x" = "AF"))
+          }
         }
+
         # create new data frame with columns: POSSN, nucleotide,AF and ref
-        final <- data.frame(temp$accession, temp$POSSN, temp$nucleotide, temp$AF.x, temp$ref)
         final <- plyr::rename(final, replace = c("temp.accession" = "Accession"))
         final <- plyr::rename(final, replace = c("temp.POSSN" = "POSSN"))
         final <- plyr::rename(final, replace = c("temp.nucleotide" = "nucleotide"))
-        final <- plyr::rename(final, replace = c("temp.AF.x" = "AF"))
         final <- plyr::rename(final, replace = c("temp.ref" = "ref"))
 
         x <- accessionno # accessionno=sample number

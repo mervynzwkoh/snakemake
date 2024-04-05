@@ -26,7 +26,6 @@ build_tree <- function(masterlist, csvfromvcfdir, samplenumber, outputloc) {
 }
 
 build_network <- function(masterlist, csvfromvcfdir, outputloc, x) {
-  print("hi")
   library(readxl)
 
   data <- readxl::read_excel(masterlist)
@@ -58,9 +57,9 @@ build_network <- function(masterlist, csvfromvcfdir, outputloc, x) {
   consensus <- seqTrack(Dmat, x.names = ref$Accession, x.dates = dates) # to fill in labels
   print(consensus)
   if (length(unique(consensus$date)) == 1) {
-    print("breaking on...")
-    print(x)
-    return(NULL)
+   print("breaking on...")
+   print(x)
+   return(NULL)
   }
   # consensustre <- plot(consensus, main = paste0('SeqTrack reconstruction',ref$Accession), col.pal=funky) #this works
   # newwd <- paste0(outputloc, "seqtrackDated.pdf")
