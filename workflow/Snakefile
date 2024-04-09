@@ -7,32 +7,32 @@ clustering = config["clustering"]
 numclusters = config["numclusters"]
 
 # Takes in fasta.msa file and forms distance array based on chosen distance matrix
-rule distanceMatrixFormation:
+rule DistanceMatrixFormation:
   output: touch("res/1distanceMatrixFormation.done")
   shell: "python workflow/scripts/1distanceMatrixFormation.py {src}/msa.fasta --distmeasure {distmeasure}"
 
 # Calculates silhouette score for chosen clustering algorithm, generates partitions in csv file
-rule MDScluster:
+rule SampleClustering:
   input: "res/1distanceMatrixFormation.done"
   output: touch("res/2MDS+cluster.done")
   conda: "envs/2MDScluster.yaml"
   shell: "python workflow/scripts/2MDS+cluster.py {src}/distancearrays --useMDS {MDS} --clustering {clustering} --distmeasure {distmeasure}"
 
 # Separates fasta and vcf files based on partitions from previous rule
-rule filepartition:
+rule FilePartitioning:
   input: "res/2MDS+cluster.done"
   output: touch("res/5filepartition.done")
   conda: "envs/5filepartition.yaml"
   shell: "python workflow/scripts/5filepartition.py {src}"
 
 # Generates indivdual csv files for each sample and HellingerMatrix.Rda for each partition
-rule faster:
+rule HellingerMatrixFormation:
   input: "res/5filepartition.done"
   output: touch("res/6faster.done")
   shell: "Rscript workflow/scripts/6faster.R {src} --num_clusters {numclusters}"
 
 # Outputs visNetwork transmission network in html format
-rule seqTrack:
+rule NetworkConstruction:
   input: "res/6faster.done"
   output: touch("res/7seqTrack.done")
   shell: "Rscript workflow/scripts/7seqTrack.R {src}"
