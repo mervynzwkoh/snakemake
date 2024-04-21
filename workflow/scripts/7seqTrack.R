@@ -57,9 +57,9 @@ build_network <- function(masterlist, csvfromvcfdir, outputloc, x) {
   consensus <- seqTrack(Dmat, x.names = ref$Accession, x.dates = dates) # to fill in labels
   print(consensus)
   if (length(unique(consensus$date)) == 1) {
-   print("breaking on...")
-   print(x)
-   return(NULL)
+    print("breaking on...")
+    print(x)
+    return(NULL)
   }
   # consensustre <- plot(consensus, main = paste0('SeqTrack reconstruction',ref$Accession), col.pal=funky) #this works
   # newwd <- paste0(outputloc, "seqtrackDated.pdf")
@@ -72,10 +72,10 @@ build_network <- function(masterlist, csvfromvcfdir, outputloc, x) {
 
   # visNetwork nodal network
   samplenum <- length(Dmat[1, ])
-  nodes <- data.frame(id = 1:samplenum, label = ref$Accession, shape = "circle", font.size = 20, color = "lightgrey")
+  nodes <- data.frame(id = 1:samplenum, label = ref$Accession, shape = "dot", font.size = 20, color = "blue")
   # nodes$color[52] <- "red"
   edges <- data.frame(from = consensus$id, to = consensus$ances, value = consensus$weight)
-  network <- visNetwork(nodes, edges, main = paste0("SeqTrack Reconstruction of Partition", x)) %>%
+  network <- visNetwork(nodes, edges, main = paste0("SeqTrack Reconstruction of Partition ", x)) %>%
     # the bottom part can omit
     visLegend() %>% visExport(
       type = "pdf", name = "export-network",

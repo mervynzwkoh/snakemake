@@ -26,7 +26,7 @@ rule FilePartitioning:
   shell: "python workflow/scripts/5filepartition.py {src}"
 
 # Generates indivdual csv files for each sample and HellingerMatrix.Rda for each partition
-rule HellingerMatrixFormation:
+rule HellingerMetricFormation:
   input: "res/5filepartition.done"
   output: touch("res/6faster.done")
   shell: "Rscript workflow/scripts/6faster.R {src} --num_clusters {numclusters}"
