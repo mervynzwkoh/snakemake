@@ -1,4 +1,4 @@
-Setting up environment to run snakemake (https://snakemake.readthedocs.io/en/stable/getting_started/installation.html)
+#Setting up environment to run snakemake (https://snakemake.readthedocs.io/en/stable/getting_started/installation.html)
 
 1. Download miniforge
    - https://github.com/conda-forge/miniforge#mambaforge
@@ -10,7 +10,7 @@ Setting up environment to run snakemake (https://snakemake.readthedocs.io/en/sta
 4. Clone the workflow to a local directory
    - https://github.com/mervynzwkoh/snakemake.git
 
-Executing the workflow
+#Executing the workflow
 
 5. Toggle to the snakemake directory in miniforge interface
 6. Enter the following command to run the pipeline
