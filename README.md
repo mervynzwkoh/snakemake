@@ -15,7 +15,7 @@
    - check if snakemake is installed by entering
      `snakemake --version`
 4. Clone the workflow to a local directory
-   - https://github.com/mervynzwkoh/snakemake.git
+   - `git clone https://github.com/mervynzwkoh/snakemake.git`
 
 # Executing the workflow
 
