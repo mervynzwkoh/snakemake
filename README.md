@@ -1,7 +1,11 @@
-# Setting up environment to run snakemake (https://snakemake.readthedocs.io/en/stable/getting_started/installation.html)
+# Setting up environment to run snakemake 
+(https://snakemake.readthedocs.io/en/stable/getting_started/installation.html)
 
 1. Download miniforge
    * https://github.com/conda-forge/miniforge#mambaforge
+   * Linux: `wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"`
+   * MacOS: `curl -fsSLo Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-$(uname -m).sh"`
+   * Windows: download installation package from https://github.com/conda-forge/miniforge#mambaforge
 2. Create new environment installed with snakemake (enter code below into miniforge cli)
    - "mamba create -c conda-forge -c bioconda -n snakemake snakemake"
 3. Activate the environment (enter code below into miniforge cli)
