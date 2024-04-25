@@ -3,14 +3,17 @@
 
 1. Download miniforge
    * https://github.com/conda-forge/miniforge#mambaforge
-   * Linux: `wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"`
-   * MacOS: `curl -fsSLo Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-$(uname -m).sh"`
+   * Linux:
+     `wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"`
+   * MacOS:
+     `curl -fsSLo Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-$(uname -m).sh"`
    * Windows: download installation package from https://github.com/conda-forge/miniforge#mambaforge
 2. Create new environment installed with snakemake (enter code below into miniforge cli)
-   - "mamba create -c conda-forge -c bioconda -n snakemake snakemake"
+   - `mamba create -c conda-forge -c bioconda -n snakemake snakemake`
 3. Activate the environment (enter code below into miniforge cli)
-   - "mamba activate snakemake"
-   - check if snakemake is installed by entering "snakemake --version"
+   - `mamba activate snakemake`
+   - check if snakemake is installed by entering
+     `snakemake --version`
 4. Clone the workflow to a local directory
    - https://github.com/mervynzwkoh/snakemake.git
 
@@ -18,7 +21,7 @@
 
 5. Toggle to the snakemake directory in miniforge interface
 6. Enter the following command to run the pipeline
-   - "snakemake res/7seqTrack.done --cores 4 --sdm conda --configfile config/config.yaml --config src={path of directory containing all fasta/vcf/msa files}"
+   - `snakemake res/7seqTrack.done --cores 4 --sdm conda --configfile config/config.yaml --config src={path of directory containing all fasta/vcf/msa files}`
    - path name should contain backslashes "/" instead of forward slash "\"
    - the directory should include (ensure files and directories are renamed accordingly):
      - msa.fasta
